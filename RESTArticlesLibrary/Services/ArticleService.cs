@@ -9,12 +9,12 @@ namespace RESTArticlesLibrary.Services;
 
 public class ArticleService : IArticleService
 {
-	private readonly IArticleRepository _articleRepository;
+    private readonly IArticleRepository _articleRepository;
 
-	public ArticleService(IArticleRepository articleRepository)
-	{
-		_articleRepository = articleRepository;
-	}
+    public ArticleService(IArticleRepository articleRepository)
+    {
+        _articleRepository = articleRepository;
+    }
 
     public async Task<ServiceResult<ArticleDTO>> AddArticle(string title, string content)
     {
@@ -36,7 +36,7 @@ public class ArticleService : IArticleService
     {
         try
         {
-            var articles = await _articleRepository.GetAll(pageNumber, pageSize);
+            var articles = await _articleRepository.GetAll(pageNumber, pageSize, nameof(Article.PublishedDate));
             var articleDTOs = articles.Select(a => a.ToModel());
             return ServiceResult.Success(articleDTOs);
         }

@@ -3,7 +3,7 @@ using RESTArticlesLibrary.Exceptions;
 
 namespace RESTArticlesLibrary.Entities;
 
-public class Article
+public class Article : BaseEntity
 {
     private Article() { }
 
@@ -39,7 +39,6 @@ public class Article
         Content = content;
     }
 
-    public int Id { get; }
     public string Title { get; private set; } = string.Empty;
     public string Content { get; private set; } = string.Empty;
     public DateTime PublishedDate { get; private set; }

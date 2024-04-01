@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RESTArticlesLibrary.Data.Context;
+using RESTArticlesLibrary.Entities;
 using RESTArticlesLibrary.Interfaces.Repositories;
 
 namespace RESTArticlesLibrary.Data.Repositories;
 
-public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : BaseEntity
 {
     protected readonly RESTArticlesDBContext db;
 
@@ -20,12 +21,13 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     public virtual async Task<IEnumerable<TEntity>> GetAll() =>
         await db.Set<TEntity>().ToListAsync();
 
-    public virtual async Task<IEnumerable<TEntity>> GetAll(int pageNumber, int pageSize) 
+    public virtual async Task<IEnumerable<TEntity>> GetAll(int pageNumber, int pageSize, string? orderByProperty = null)
     {
         pageNumber = Math.Abs(pageNumber);
         pageSize = Math.Abs(pageSize);
 
         return await db.Set<TEntity>()
+                       .OrderBy(e => orderByProperty != null ? EF.Property<object>(e, orderByProperty) : e.Id)
                        .Skip((pageNumber - 1) * pageSize)
                        .Take(pageSize)
                        .ToListAsync();
