@@ -44,8 +44,8 @@ public class Article
     public string Content { get; private set; } = string.Empty;
     public DateTime PublishedDate { get; private set; }
 
-    public const int TitleMaxLength = 50;
-    public const int ContentMaxLength = 10000;
+    public const int TitleMaxLength = 60;
+    public const int ContentMaxLength = 20000;
 
     public ArticleDTO ToModel() => new(Id, Title, Content, PublishedDate);
 }
