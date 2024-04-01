@@ -2,8 +2,8 @@
 
 ## Assumptions
 
-- Limits have been imposed in regards to the `title` and `content` length. These have been chosen based on the average blog post [title](https://sheknowsseo.co/blog-post-title-length/) and [content](https://www.wix.com/blog/how-long-should-a-blog-post-be) word counts. The average English language word length is [4.7 characters](https://www.wyliecomm.com/2021/11/whats-the-best-length-of-a-word-online).
-- Only the `title` and `content` fields are allowed to change in regards to updating the article. The `publishedDate` should remain the same since that's the date the article got created.
+- Limits have been imposed in regard to the `title` and `content` length. These have been chosen based on the average blog post [title](https://sheknowsseo.co/blog-post-title-length/) and [content](https://www.wix.com/blog/how-long-should-a-blog-post-be) word counts. The average English language word length is [4.7 characters](https://www.wyliecomm.com/2021/11/whats-the-best-length-of-a-word-online).
+- Only the `title` and `content` fields are allowed to change in regard to updating the article. The `publishedDate` should remain the same since that's the date the article got created.
 - Authorization requirements have been added for the `create`, `update` and `delete` endpoints, leaving only the `get` ones available for the public users.
 
 ## Design decisions
