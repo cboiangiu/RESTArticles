@@ -9,10 +9,7 @@ public class Article : BaseEntity
 
     public static Article Create()
     {
-        var article = new Article
-        {
-            PublishedDate = DateTime.UtcNow
-        };
+        var article = new Article { PublishedDate = DateTime.UtcNow };
 
         return article;
     }

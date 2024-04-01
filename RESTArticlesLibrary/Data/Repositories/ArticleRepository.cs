@@ -6,5 +6,6 @@ namespace RESTArticlesLibrary.Data.Repositories;
 
 public class ArticleRepository : RepositoryBase<Article>, IArticleRepository
 {
-    public ArticleRepository(RESTArticlesDBContext context) : base(context) { }
+    public ArticleRepository(RESTArticlesDBContext context)
+        : base(context) { }
 }

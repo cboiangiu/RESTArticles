@@ -12,16 +12,10 @@ public class ArticleMap : IEntityTypeConfiguration<Article>
 
         builder.HasKey("Id");
 
-        builder.Property(p => p.Title)
-            .HasColumnType($"varchar({Article.TitleMaxLength})")
-            .IsRequired();
+        builder.Property(p => p.Title).HasColumnType($"varchar({Article.TitleMaxLength})").IsRequired();
 
-        builder.Property(p => p.Content)
-            .HasColumnType($"varchar({Article.ContentMaxLength})")
-            .IsRequired();
+        builder.Property(p => p.Content).HasColumnType($"varchar({Article.ContentMaxLength})").IsRequired();
 
-        builder.Property(p => p.PublishedDate)
-            .HasColumnType("TEXT")
-            .IsRequired();
+        builder.Property(p => p.PublishedDate).HasColumnType("TEXT").IsRequired();
     }
 }

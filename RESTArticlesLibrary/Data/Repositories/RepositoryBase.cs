@@ -5,12 +5,12 @@ using RESTArticlesLibrary.Interfaces.Repositories;
 
 namespace RESTArticlesLibrary.Data.Repositories;
 
-public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : BaseEntity
+public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
+    where TEntity : BaseEntity
 {
     protected readonly RESTArticlesDBContext db;
 
-    public RepositoryBase(RESTArticlesDBContext context) =>
-        db = context;
+    public RepositoryBase(RESTArticlesDBContext context) => db = context;
 
     public virtual async Task Add(TEntity entity)
     {
@@ -18,8 +18,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         await db.SaveChangesAsync();
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetAll() =>
-        await db.Set<TEntity>().ToListAsync();
+    public virtual async Task<IEnumerable<TEntity>> GetAll() => await db.Set<TEntity>().ToListAsync();
 
     public virtual async Task<IEnumerable<TEntity>> GetAll(int pageNumber, int pageSize, string? orderByProperty = null)
     {
@@ -27,14 +26,13 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         pageSize = Math.Abs(pageSize);
 
         return await db.Set<TEntity>()
-                       .OrderBy(e => orderByProperty != null ? EF.Property<object>(e, orderByProperty) : e.Id)
-                       .Skip((pageNumber - 1) * pageSize)
-                       .Take(pageSize)
-                       .ToListAsync();
+            .OrderBy(e => orderByProperty != null ? EF.Property<object>(e, orderByProperty) : e.Id)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
     }
 
-    public virtual async Task<TEntity?> GetById(int id) =>
-        await db.Set<TEntity>().FindAsync(id);
+    public virtual async Task<TEntity?> GetById(int id) => await db.Set<TEntity>().FindAsync(id);
 
     public virtual async Task Remove(TEntity entity)
     {
@@ -48,6 +46,5 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         await db.SaveChangesAsync();
     }
 
-    public void Dispose() =>
-        db.Dispose();
+    public void Dispose() => db.Dispose();
 }

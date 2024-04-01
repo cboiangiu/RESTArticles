@@ -1,22 +1,21 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Text;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using RESTArticlesLibrary.Data.Context;
 using RESTArticlesLibrary.Data.Repositories;
 using RESTArticlesLibrary.Interfaces.Repositories;
 using RESTArticlesLibrary.Interfaces.Services;
 using RESTArticlesLibrary.Services;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<RESTArticlesDBContext>(options =>
-    options.UseSqlite("Data Source=local.db")
-);
+builder.Services.AddDbContext<RESTArticlesDBContext>(options => options.UseSqlite("Data Source=local.db"));
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder
+    .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -31,8 +30,10 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
-    {
-        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+{
+    options.AddSecurityDefinition(
+        "Bearer",
+        new OpenApiSecurityScheme
         {
             Name = "Authorization",
             Type = SecuritySchemeType.Http,
@@ -40,23 +41,22 @@ builder.Services.AddSwaggerGen(options =>
             BearerFormat = "JWT",
             In = ParameterLocation.Header,
             Description = "Paste your JWT Bearer token here"
-        });
+        }
+    );
 
-        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    options.AddSecurityRequirement(
+        new OpenApiSecurityRequirement
         {
             {
                 new OpenApiSecurityScheme
                 {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
+                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
                 },
                 Array.Empty<string>()
             }
-        });
-    });
+        }
+    );
+});
 
 var app = builder.Build();
 

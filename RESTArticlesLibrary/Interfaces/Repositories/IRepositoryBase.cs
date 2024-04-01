@@ -2,7 +2,8 @@
 
 namespace RESTArticlesLibrary.Interfaces.Repositories;
 
-public interface IRepositoryBase<TEntity> : IDisposable where TEntity : BaseEntity
+public interface IRepositoryBase<TEntity> : IDisposable
+    where TEntity : BaseEntity
 {
     Task Add(TEntity entity);
     Task<TEntity?> GetById(int id);

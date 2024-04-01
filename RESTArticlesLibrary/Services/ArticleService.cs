@@ -50,8 +50,9 @@ public class ArticleService : IArticleService
     {
         var article = await _articleRepository.GetById(id);
 
-        return article != null ? ServiceResult.Success(article.ToModel()) :
-                    ServiceResult.Fail<ArticleDTO>(new ArticleNotFoundException());
+        return article != null
+            ? ServiceResult.Success(article.ToModel())
+            : ServiceResult.Fail<ArticleDTO>(new ArticleNotFoundException());
     }
 
     public async Task<ServiceResult<ArticleDTO>> RemoveArticle(int id)
