@@ -14,6 +14,6 @@
 - The `repository` design pattern has been used to abstract data access away from the application's core logic to improve testability and flexibility.
 - `Services` have been used to encapsulate business logic, promote code reusability, SoC and testability.
 - A `ServiceResult` abstraction has been used in order to make error handling more predictable.
-- The `validation` for the entities has been encapsulated within the setters in order to keep the validation business login as close to the entity as possible.
+- The `validation` for the entities has been encapsulated within the setters in order to keep the validation business logic as close to the entity as possible.
 - `Custom exceptions` have been created to handle various errors and error messages.
-- `DTOs` have been used to provide the client with appropriate data, control over data exposure, decoupling it from the internal data models and even facilitating versioning in the future.
+- `DTOs` have been used to provide the client with appropriate data, have control over data exposure, decouple data from the internal data models and even facilitate versioning in the future.
