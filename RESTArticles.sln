@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTArticles", "RESTArticles\RESTArticles.csproj", "{313598D9-7DC0-462E-8617-1F3BF97B4C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTArticlesLibrary", "RESTArticlesLibrary\RESTArticlesLibrary.csproj", "{D413BEB0-2507-4FA2-B790-FB92FE38F3F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{313598D9-7DC0-462E-8617-1F3BF97B4C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313598D9-7DC0-462E-8617-1F3BF97B4C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313598D9-7DC0-462E-8617-1F3BF97B4C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313598D9-7DC0-462E-8617-1F3BF97B4C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D413BEB0-2507-4FA2-B790-FB92FE38F3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D413BEB0-2507-4FA2-B790-FB92FE38F3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D413BEB0-2507-4FA2-B790-FB92FE38F3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D413BEB0-2507-4FA2-B790-FB92FE38F3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57553F90-E1AC-46C4-B05B-AB5066AC08DD}
+	EndGlobalSection
+EndGlobal
